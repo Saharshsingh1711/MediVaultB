@@ -1,0 +1,329 @@
+[
+  {
+    "patient_id": "PAT-001",
+    "login_email_mapping": "pat-001@medivault.com",
+    "first_name": "Aarav",
+    "last_name": "Sharma",
+    "blood_group": "O+",
+    "medical_reports": [
+      {
+        "title": "Complete Blood Count (CBC)",
+        "record_type": "Lab Result",
+        "raw_text_content": "Hemoglobin: 14.5 g/dL. WBC: 7000/mcL. RBC: 4.8 million/mcL. Platelets: 250,000/mcL. All parameters within normal ranges. No sign of infection or anemia.",
+        "is_emergency_flag": false,
+        "date": "2023-10-14"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-002",
+    "login_email_mapping": "pat-002@medivault.com",
+    "first_name": "Diya",
+    "last_name": "Verma",
+    "blood_group": "A-",
+    "medical_reports": [
+      {
+        "title": "Chest X-Ray",
+        "record_type": "Imaging",
+        "raw_text_content": "Lungs are clear. No active pulmonary infiltrates. Heart size is normal. Bony thorax is intact.",
+        "is_emergency_flag": false,
+        "date": "2024-01-22"
+      },
+      {
+        "title": "Asthma Action Plan",
+        "record_type": "Clinical Note",
+        "raw_text_content": "Patient prescribed Albuterol inhaler. Use 2 puffs every 4-6 hours as needed for shortness of breath.",
+        "is_emergency_flag": false,
+        "date": "2024-02-15"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-003",
+    "login_email_mapping": "pat-003@medivault.com",
+    "first_name": "Vihaan",
+    "last_name": "Gupta",
+    "blood_group": "B+",
+    "medical_reports": [
+      {
+        "title": "Cardiology Report",
+        "record_type": "Consultation",
+        "raw_text_content": "ECG shows normal sinus rhythm. Patient complains of occasional palpitations. Recommended 24-hour Holter monitor for further evaluation.",
+        "is_emergency_flag": false,
+        "date": "2024-03-05"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-004",
+    "login_email_mapping": "pat-004@medivault.com",
+    "first_name": "Aadhya",
+    "last_name": "Singh",
+    "blood_group": "AB+",
+    "medical_reports": [
+      {
+        "title": "Dermatology Biopsy",
+        "record_type": "Lab Result",
+        "raw_text_content": "Benign nevus excised from right arm. No atypia or malignancy identified.",
+        "is_emergency_flag": false,
+        "date": "2023-11-10"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-005",
+    "login_email_mapping": "pat-005@medivault.com",
+    "first_name": "Krishna",
+    "last_name": "Kumar",
+    "blood_group": "O-",
+    "medical_reports": [
+      {
+        "title": "Emergency Room Admission",
+        "record_type": "ER Note",
+        "raw_text_content": "CRITICAL: Patient arrived via EMS with severe chest pain. Diagnosed with acute myocardial infarction. Transferred to cath lab immediately.",
+        "is_emergency_flag": true,
+        "date": "2024-04-10"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-006",
+    "login_email_mapping": "pat-006@medivault.com",
+    "first_name": "Ananya",
+    "last_name": "Desai",
+    "blood_group": "A+",
+    "medical_reports": [
+      {
+        "title": "Endocrinology Visit",
+        "record_type": "Consultation",
+        "raw_text_content": "HbA1c is 7.2%. Adjustment made to Metformin dosage. Patient advised on dietary restrictions and regular exercise.",
+        "is_emergency_flag": false,
+        "date": "2024-03-20"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-007",
+    "login_email_mapping": "pat-007@medivault.com",
+    "first_name": "Arjun",
+    "last_name": "Reddy",
+    "blood_group": "B-",
+    "medical_reports": [
+      {
+        "title": "MRI Report",
+        "record_type": "Imaging",
+        "raw_text_content": "MRI of right knee shows a partial tear of the ACL and meniscus damage. Surgical consultation recommended.",
+        "is_emergency_flag": false,
+        "date": "2024-02-28"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-008",
+    "login_email_mapping": "pat-008@medivault.com",
+    "first_name": "Kavya",
+    "last_name": "Menon",
+    "blood_group": "AB-",
+    "medical_reports": [
+      {
+        "title": "General Physical",
+        "record_type": "Clinical Note",
+        "raw_text_content": "Patient in good health. Blood pressure 110/70. Recommended annual flu shot.",
+        "is_emergency_flag": false,
+        "date": "2023-09-12"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-009",
+    "login_email_mapping": "pat-009@medivault.com",
+    "first_name": "Sai",
+    "last_name": "Joshi",
+    "blood_group": "O+",
+    "medical_reports": [
+      {
+        "title": "Ophthalmology Review",
+        "record_type": "Consultation",
+        "raw_text_content": "Vision 20/20 in both eyes. Intraocular pressure normal. No signs of glaucoma or cataracts.",
+        "is_emergency_flag": false,
+        "date": "2024-01-05"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-010",
+    "login_email_mapping": "pat-010@medivault.com",
+    "first_name": "Khushi",
+    "last_name": "Das",
+    "blood_group": "A+",
+    "medical_reports": [
+      {
+        "title": "Urinalysis",
+        "record_type": "Lab Result",
+        "raw_text_content": "Clear appearance. Negative for glucose, ketones, and protein. Normal specific gravity.",
+        "is_emergency_flag": false,
+        "date": "2024-03-30"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-011",
+    "login_email_mapping": "pat-011@medivault.com",
+    "first_name": "Ishaan",
+    "last_name": "Mukherjee",
+    "blood_group": "B+",
+    "medical_reports": [
+      {
+        "title": "Post-Op Followup",
+        "record_type": "Clinical Note",
+        "raw_text_content": "Incision site healing well. Sutures removed. Clear to resume light activities.",
+        "is_emergency_flag": false,
+        "date": "2024-04-02"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-012",
+    "login_email_mapping": "pat-012@medivault.com",
+    "first_name": "Riya",
+    "last_name": "Ghosh",
+    "blood_group": "AB+",
+    "medical_reports": [
+      {
+        "title": "Neurology Initial Evaluation",
+        "record_type": "Consultation",
+        "raw_text_content": "Patient reports frequent migraines. Prescribed Sumatriptan for acute attacks. Advised to keep a headache diary.",
+        "is_emergency_flag": false,
+        "date": "2024-02-14"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-013",
+    "login_email_mapping": "pat-013@medivault.com",
+    "first_name": "Shaurya",
+    "last_name": "Yadav",
+    "blood_group": "O-",
+    "medical_reports": [
+      {
+        "title": "Allergy Test",
+        "record_type": "Lab Result",
+        "raw_text_content": "Severe allergic reaction to peanuts and tree nuts identified. EpiPen prescribed. Avoidance mandatory.",
+        "is_emergency_flag": true,
+        "date": "2023-11-20"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-014",
+    "login_email_mapping": "pat-014@medivault.com",
+    "first_name": "Avni",
+    "last_name": "Tiwari",
+    "blood_group": "A-",
+    "medical_reports": [
+      {
+        "title": "Thyroid Panel",
+        "record_type": "Lab Result",
+        "raw_text_content": "TSH elevated at 6.5 mIU/L. T4 slightly low. Diagnosed with mild hypothyroidism. Starting Levothyroxine 50mcg.",
+        "is_emergency_flag": false,
+        "date": "2024-03-12"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-015",
+    "login_email_mapping": "pat-015@medivault.com",
+    "first_name": "Atharv",
+    "last_name": "Ahluwalia",
+    "blood_group": "B-",
+    "medical_reports": [
+      {
+        "title": "Gastroenterology Scope",
+        "record_type": "Procedure",
+        "raw_text_content": "Esophagogastroduodenoscopy performed. Mild gastritis noted. No ulcers or malignancy.",
+        "is_emergency_flag": false,
+        "date": "2024-01-18"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-016",
+    "login_email_mapping": "pat-016@medivault.com",
+    "first_name": "Mahi",
+    "last_name": "Agarwal",
+    "blood_group": "AB-",
+    "medical_reports": [
+      {
+        "title": "Pediatric Checkup",
+        "record_type": "Clinical Note",
+        "raw_text_content": "Growth parameters normal. Immunizations up to date. Reassuring development.",
+        "is_emergency_flag": false,
+        "date": "2024-04-05"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-017",
+    "login_email_mapping": "pat-017@medivault.com",
+    "first_name": "Vikram",
+    "last_name": "Bhatia",
+    "blood_group": "O+",
+    "medical_reports": [
+      {
+        "title": "Orthopedic Follow-up",
+        "record_type": "Consultation",
+        "raw_text_content": "Fractured radius healing well based on repeat X-ray. Cast to be removed in 2 weeks. Start physiotherapy.",
+        "is_emergency_flag": false,
+        "date": "2024-02-10"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-018",
+    "login_email_mapping": "pat-018@medivault.com",
+    "first_name": "Neha",
+    "last_name": "Kapoor",
+    "blood_group": "A+",
+    "medical_reports": [
+      {
+        "title": "Psychiatry Assessment",
+        "record_type": "Consultation",
+        "raw_text_content": "Patient reporting ongoing generalized anxiety. Cognitive behavioral therapy recommended along with current SSRI regimen.",
+        "is_emergency_flag": false,
+        "date": "2024-03-25"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-019",
+    "login_email_mapping": "pat-019@medivault.com",
+    "first_name": "Rohan",
+    "last_name": "Pillai",
+    "blood_group": "B+",
+    "medical_reports": [
+      {
+        "title": "Triage Note - Urgent Care",
+        "record_type": "ER Note",
+        "raw_text_content": "URGENT: Patient presents with high fever, neck stiffness, and photophobia. Suspect meningitis. Initiating broad-spectrum antibiotics and preparing for lumbar puncture.",
+        "is_emergency_flag": true,
+        "date": "2024-04-09"
+      }
+    ]
+  },
+  {
+    "patient_id": "PAT-020",
+    "login_email_mapping": "pat-020@medivault.com",
+    "first_name": "Meera",
+    "last_name": "Nair",
+    "blood_group": "AB+",
+    "medical_reports": [
+      {
+        "title": "Annual Blood Panel",
+        "record_type": "Lab Result",
+        "raw_text_content": "Cholesterol levels slightly elevated (LDL 135 mg/dL). Advised low-fat diet and exercise. All other results unremarkable.",
+        "is_emergency_flag": false,
+        "date": "2024-01-30"
+      }
+    ]
+  }
+]
