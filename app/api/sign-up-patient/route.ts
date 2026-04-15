@@ -110,6 +110,10 @@ export async function POST(request: Request) {
       email: validatedData.data.email,
       password: password,
       email_confirm: true,
+      user_metadata: {
+        role: "patient",
+        full_name: `${validatedData.data.first_name} ${validatedData.data.second_name}`,
+      },
     });
 
     if (signUpError) {
@@ -175,10 +179,15 @@ export async function POST(request: Request) {
       profilePicture: data.profilePicture,
     };
 
-    await algolia.algoliaClient.saveObject({
-      indexName: algolia.indexes.PATIENT_INDEX_NAME,
-      body: algoliaRecord,
-    });
+    try {
+      await algolia.algoliaClient.saveObject({
+        indexName: algolia.indexes.PATIENT_INDEX_NAME,
+        body: algoliaRecord,
+      });
+    } catch (algoliaError) {
+      console.error("Algolia indexing failed:", algoliaError);
+      // We don't throw here to allow user registration to succeed even if indexing fails
+    }
 
     return NextResponse.json({ document: data }, { status: 201 });
   } catch (error) {

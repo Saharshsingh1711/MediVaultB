@@ -251,6 +251,10 @@ export async function POST(request: Request) {
       email: validatedData.data.email,
       password: password,
       email_confirm: true,
+      user_metadata: {
+        role: "doctor",
+        full_name: `${validatedData.data.first_name} ${validatedData.data.second_name}`,
+      },
     });
 
     if (signUpError) {
@@ -268,50 +272,35 @@ export async function POST(request: Request) {
       );
     }
 
-    const [profilePickPubUrl, fileUploadErr] = await uploadFileAndGetUrl(
-      validatedData.data.profilePicture,
-      user.id,
-      supabaseAdmin,
-      "profile-pic",
-    );
-    if (fileUploadErr) return fileUploadErr;
-
-    let registrationCertificateUrl: string | null = null;
-    let governmentIdUrl: string | null = null;
-    let degreeCertificateUrl: string | null = null;
-
     const bucketName = "doc-data";
 
-    if (validatedData.data.registrationCertificate instanceof File) {
-      const [url, fileUploadErr] = await uploadFileAndGetUrl(
-        validatedData.data.registrationCertificate,
-        user.id,
-        supabaseAdmin,
-        bucketName,
-      );
-      if (fileUploadErr) return fileUploadErr;
-      registrationCertificateUrl = url as string;
-    }
-    if (validatedData.data.governmentId instanceof File) {
-      const [url, fileUploadErr] = await uploadFileAndGetUrl(
-        validatedData.data.governmentId,
-        user.id,
-        supabaseAdmin,
-        bucketName,
-      );
-      if (fileUploadErr) return fileUploadErr;
-      governmentIdUrl = url as string;
-    }
-    if (validatedData.data.degreeCertificate instanceof File) {
-      const [url, fileUploadErr] = await uploadFileAndGetUrl(
-        validatedData.data.degreeCertificate,
-        user.id,
-        supabaseAdmin,
-        bucketName,
-      );
-      if (fileUploadErr) return fileUploadErr;
-      degreeCertificateUrl = url as string;
-    }
+    // Prepare all upload promises
+    const uploadPromises = [
+      uploadFileAndGetUrl(validatedData.data.profilePicture, user.id, supabaseAdmin, "profile-pic"),
+      validatedData.data.registrationCertificate instanceof File 
+        ? uploadFileAndGetUrl(validatedData.data.registrationCertificate, user.id, supabaseAdmin, bucketName)
+        : Promise.resolve([null, null]),
+      validatedData.data.governmentId instanceof File 
+        ? uploadFileAndGetUrl(validatedData.data.governmentId, user.id, supabaseAdmin, bucketName)
+        : Promise.resolve([null, null]),
+      validatedData.data.degreeCertificate instanceof File 
+        ? uploadFileAndGetUrl(validatedData.data.degreeCertificate, user.id, supabaseAdmin, bucketName)
+        : Promise.resolve([null, null]),
+    ];
+
+    // Execute uploads in parallel
+    const [
+      [profilePickPubUrl, profileErr],
+      [registrationCertificateUrl, regErr],
+      [governmentIdUrl, govErr],
+      [degreeCertificateUrl, degreeErr]
+    ] = await Promise.all(uploadPromises);
+
+    // Error handling for any failed upload
+    if (profileErr) return profileErr;
+    if (regErr) return regErr;
+    if (govErr) return govErr;
+    if (degreeErr) return degreeErr;
 
     const tableData = {
       user_id: user.id,
@@ -344,10 +333,15 @@ export async function POST(request: Request) {
       specialization: data.specialization,
     };
 
-    await algolia.algoliaClient.saveObject({
-      indexName: algolia.indexes.DOC_INDEX_NAME,
-      body: algoliaRecord,
-    });
+    try {
+      await algolia.algoliaClient.saveObject({
+        indexName: algolia.indexes.DOC_INDEX_NAME,
+        body: algoliaRecord,
+      });
+    } catch (algoliaError) {
+      console.error("Algolia indexing failed for doctor:", algoliaError);
+      // We don't throw here to allow user registration to succeed even if indexing fails
+    }
 
     //TODO: send email verification and phone verification (if phone number provided) here
     delete data.emailVerified;

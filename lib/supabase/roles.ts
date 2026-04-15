@@ -36,24 +36,20 @@ async function fetchUserRole(userId: string): Promise<UserRole> {
   return data.role;
 }
 
-export async function getServerUserRole(supabase: any, userId: string): Promise<UserRole> {
-  // Check if patient
-  const { data: patientData } = await supabase
-    .from(SB_TABLES.user_patient)
-    .select("user_id")
-    .eq("user_id", userId)
-    .single();
+export async function getServerUserRole(supabase: any, userId: string, user?: any): Promise<UserRole> {
+  // 1. Check metadata first (FASTEST)
+  if (user?.user_metadata?.role) {
+    return user.user_metadata.role as UserRole;
+  }
 
-  if (patientData) return "patient";
+  // 2. Parallelize table lookups if metadata is missing (FALLBACK)
+  const [patientResult, doctorResult] = await Promise.all([
+    supabase.from(SB_TABLES.user_patient).select("user_id").eq("user_id", userId).maybeSingle(),
+    supabase.from(SB_TABLES.user_doctor).select("user_id").eq("user_id", userId).maybeSingle()
+  ]);
 
-  // Check if doctor
-  const { data: docData } = await supabase
-    .from(SB_TABLES.user_doctor)
-    .select("user_id")
-    .eq("user_id", userId)
-    .single();
-
-  if (docData) return "doctor";
+  if (patientResult.data) return "patient";
+  if (doctorResult.data) return "doctor";
 
   return "none";
 }

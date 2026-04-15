@@ -33,7 +33,7 @@ export async function login(formData: FormData) {
 
   const supabaseAdmin = createAdminClient();
 
-  const actualRole = await getServerUserRole(supabaseAdmin, authData.user.id);
+  const actualRole = await getServerUserRole(supabaseAdmin, authData.user.id, authData.user);
 
   // Strict validation: Role must match the portal tab
   if (intendedRole && actualRole !== intendedRole) {

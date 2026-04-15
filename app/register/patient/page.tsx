@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { GlassCard } from "@/components/GlassCard";
 import { Button } from "@/components/Button";
 import { cn } from "@/lib/utils";
+import { createClient } from "@/lib/supabase/client";
 
 export default function PatientRegisterPage() {
   const [isPending, setIsPending] = useState(false);
@@ -24,8 +25,21 @@ export default function PatientRegisterPage() {
 
       const data = await res.json();
       if (res.ok) {
-        setMessage("✅ Registration successful! Entering your Vault...");
-        setTimeout(() => window.location.href = "/patient/dashboard", 1500);
+        // Auto-login after registration
+        const supabase = createClient();
+        const { error: loginError } = await supabase.auth.signInWithPassword({
+          email: formData.get("email") as string,
+          password: formData.get("password") as string,
+        });
+
+        if (loginError) {
+          console.error("Auto-login failed:", loginError);
+          setMessage("✅ Registration successful! Please log in manually.");
+          setTimeout(() => window.location.href = "/login", 2000);
+        } else {
+          setMessage("✅ Vault synchronized! Entering your dashboard...");
+          setTimeout(() => window.location.href = "/patient/dashboard", 1500);
+        }
       } else {
         setMessage(`❌ Error: ${data.error}`);
       }
